@@ -178,10 +178,24 @@ class _ListaTarefasPageState extends State<ListaTarefasPage> {
           title: const Text("Visualizar Lugar Favorito"),
           content: Column(
             mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text("ID: ${tarefa.id}"),
+
+              // MOSTRAR IMAGEM
+              if (tarefa.imagem != null)
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(10),
+                  child: Image.file(
+                    tarefa.imagem!,
+                    height: 200,
+                    width: double.infinity,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+
+              const SizedBox(height: 10),
+
               Text("Descrição: ${tarefa.descricao}"),
+
               if (tarefa.prazo != null)
                 Text("Prazo: ${tarefa.prazoFormatado}")
             ],

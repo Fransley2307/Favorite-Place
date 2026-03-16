@@ -24,11 +24,16 @@ class ConteudoFormDialogState extends State<ConteudoFormDialog> {
   final ImagePicker picker = ImagePicker();
 
   @override
+  @override
   void initState() {
     super.initState();
+
     if (widget.tarefaAtual != null) {
       descricaoController.text = widget.tarefaAtual!.descricao;
       prazoController.text = widget.tarefaAtual!.prazoFormatado;
+
+      // carregar imagem da tarefa
+      imagemSelecionada = widget.tarefaAtual!.imagem;
     }
   }
 
@@ -152,5 +157,6 @@ class ConteudoFormDialogState extends State<ConteudoFormDialog> {
     prazo: prazoController.text.isEmpty
         ? null
         : prazoFormat.parse(prazoController.text),
+    imagem: imagemSelecionada,
   );
 }
