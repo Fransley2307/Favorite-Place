@@ -124,7 +124,7 @@ class _ListaTarefasPageState extends State<ListaTarefasPage> {
           value: ACAO_VISUALIZAR,
           child: Row(
               children: [
-                Icon(Icons.visibility, color: Colors.blue),
+                Icon(Icons.visibility, color: Colors.yellow),
                 Padding(
                   padding: EdgeInsets.only(left: 10),
                   child: Text('Visualizar'),
