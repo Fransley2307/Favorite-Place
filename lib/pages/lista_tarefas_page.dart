@@ -15,17 +15,17 @@ class _ListaTarefasPageState extends State<ListaTarefasPage> {
   static const ACAO_DELETAR = 'Deletar';
   static const ACAO_VISUALIZAR = 'Visualizar';
 
-  final _tarefas = <Tarefa>[];
+  final _tarefas = <Tarefa>[]; // que seria meu lugar favorito
 
-  var ultimoId = 0;
+  var ultimoId = 0; // seria id automatico
 
   @override
   Widget build(BuildContext context){
     return Scaffold(
       appBar: _criarAppBar(),
       body: _criarBody(),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _abrirForm,
+      floatingActionButton: FloatingActionButton( // seria o botão de adicionar
+        onPressed: _abrirForm, // vai abrir o formulario
         tooltip: 'Novo Lugar Favorito',
         backgroundColor: Colors.deepPurple,
         child: const Icon(Icons.add, color: Colors.black),
@@ -46,7 +46,7 @@ class _ListaTarefasPageState extends State<ListaTarefasPage> {
       ],
     );
   }
-
+// aqui aparece a msj na tela se não tiver nem um local encontrado
   Widget _criarBody(){
     if(_tarefas.isEmpty){
       return const Center(
@@ -88,13 +88,13 @@ class _ListaTarefasPageState extends State<ListaTarefasPage> {
           },
         );
       },
-      separatorBuilder: (BuildContext context, int index) => const Divider(),
+      separatorBuilder: (BuildContext context, int index) => const Divider(), // aqui separa os itens por linha
     );
   }
 
   List<PopupMenuEntry<String>> criarItemMenuPopUp(){
     return [
-      const PopupMenuItem<String>(
+      const PopupMenuItem<String>( // aqui seria o botão para editar os lugares
           value: ACAO_EDITAR,
           child: Row(
             children: [
@@ -107,7 +107,7 @@ class _ListaTarefasPageState extends State<ListaTarefasPage> {
           )
       ),
 
-      const PopupMenuItem<String>(
+      const PopupMenuItem<String>( // botão para visualizar
           value: ACAO_VISUALIZAR,
           child: Row(
               children: [
@@ -120,7 +120,7 @@ class _ListaTarefasPageState extends State<ListaTarefasPage> {
           )
       ),
 
-      const PopupMenuItem<String>(
+      const PopupMenuItem<String>( // botão excluir
           value: ACAO_DELETAR,
           child: Row(
             children: [
@@ -132,13 +132,11 @@ class _ListaTarefasPageState extends State<ListaTarefasPage> {
             ],
           )
       )
-
-
     ];
   }
 
   void _excluir(int index){
-    showDialog(
+    showDialog( // vai aparecer um alerta para confirmar se deseja excluir mesmo
         context: context,
         builder: (BuildContext context){
           return AlertDialog(
@@ -173,7 +171,7 @@ class _ListaTarefasPageState extends State<ListaTarefasPage> {
   }
 
   void _visualizarTarefa(Tarefa tarefa) {
-    showDialog(
+    showDialog( // mostra o detalhe do lugar favorito
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
@@ -181,8 +179,7 @@ class _ListaTarefasPageState extends State<ListaTarefasPage> {
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-
-              // MOSTRAR IMAGEM
+              // aqui exibe a imagem caso tenha
               if (tarefa.imagem != null)
                 ClipRRect(
                   borderRadius: BorderRadius.circular(10),
@@ -217,6 +214,7 @@ class _ListaTarefasPageState extends State<ListaTarefasPage> {
     final navigator = Navigator.of(context);
     navigator.pushNamed(FiltroPage.ROUTE_NAME).then((alterouValores){
       if (alterouValores == true){
+
       }
     });
   }

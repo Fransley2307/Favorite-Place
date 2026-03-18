@@ -2,7 +2,7 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:image_picker/image_picker.dart';
+import 'package:image_picker/image_picker.dart'; // importa a biblioteca para pegar imagem da camera
 
 import '../model/tarefa.dart';
 
@@ -16,13 +16,15 @@ class ConteudoFormDialog extends StatefulWidget {
 
 class ConteudoFormDialogState extends State<ConteudoFormDialog> {
   final formkey = GlobalKey<FormState>();
-  final descricaoController = TextEditingController();
-  final descricao = TextEditingController();
+
+  final descricaoController = TextEditingController(); // campo descrição principaç
+  final descricao = TextEditingController(); // Outro campo de descrição (local)
   final prazoController = TextEditingController();
+
   final prazoFormat = DateFormat('dd/MM/yyyy');
 
-  File? imagemSelecionada;
-  final ImagePicker picker = ImagePicker();
+  File? imagemSelecionada; // Guarda a imagem selecionada
+  final ImagePicker picker = ImagePicker(); // seleciona a imagem
 
   @override
   @override
@@ -30,12 +32,11 @@ class ConteudoFormDialogState extends State<ConteudoFormDialog> {
     super.initState();
 
     if (widget.tarefaAtual != null) {
-      descricaoController.text = widget.tarefaAtual!.descricao;
-      descricao.text = widget.tarefaAtual!.descricao;
-      prazoController.text = widget.tarefaAtual!.prazoFormatado;
+      descricaoController.text = widget.tarefaAtual!.descricao; // Preenche descrição
+      descricao.text = widget.tarefaAtual!.descricao; // Preenche segundo campo
+      prazoController.text = widget.tarefaAtual!.prazoFormatado; // Preenche data
 
-      // carregar imagem da tarefa
-      imagemSelecionada = widget.tarefaAtual!.imagem;
+      imagemSelecionada = widget.tarefaAtual!.imagem; // Carrega imagem existente
     }
   }
 
@@ -47,7 +48,7 @@ class ConteudoFormDialogState extends State<ConteudoFormDialog> {
           mainAxisSize: MainAxisSize.min,
           children: [
 
-            TextFormField(
+            TextFormField( // primeiro campo de descrição
               controller: descricaoController,
               decoration: const InputDecoration(labelText: 'Descrição'),
               validator: (String? valor) {
@@ -58,7 +59,7 @@ class ConteudoFormDialogState extends State<ConteudoFormDialog> {
               },
             ),
 
-            TextFormField(
+            TextFormField( // Campo de data
               controller: prazoController,
               decoration: InputDecoration(
                 labelText: 'Dia',
@@ -69,13 +70,13 @@ class ConteudoFormDialogState extends State<ConteudoFormDialog> {
                     onPressed: () => prazoController.clear(),
                     icon: const Icon(Icons.close)),
               ),
-              readOnly: true,
+              readOnly: true, // não deixa digitar manualmente a data
             ),
 
             const SizedBox(height: 20),
 
-            GestureDetector(
-              onTap: _selecionarImagem,
+            GestureDetector( // area para clicar para adicionar a imagem
+              onTap: _selecionarImagem, // quando clica a para selecioanr a imagem
               child: Container(
                 height: 150,
                 width: double.infinity,
@@ -103,18 +104,18 @@ class ConteudoFormDialogState extends State<ConteudoFormDialog> {
 
             const SizedBox(height: 10),
 
-            if (imagemSelecionada != null)
+            if (imagemSelecionada != null) // Se tiver imagem
               TextButton.icon(
                 onPressed: () {
                   setState(() {
-                    imagemSelecionada = null;
+                    imagemSelecionada = null; // Remove imagem
                   });
                 },
                 icon: const Icon(Icons.delete),
                 label: const Text("Remover imagem"),
               ),
 
-            TextFormField(
+            TextFormField( // descrição do locar
               controller: descricao,
               decoration: const InputDecoration(labelText: 'Descrição do Local'),
               validator: (String? valor) {
@@ -131,12 +132,12 @@ class ConteudoFormDialogState extends State<ConteudoFormDialog> {
 
   Future<void> _selecionarImagem() async {
     final XFile? imagem = await picker.pickImage(
-      source: ImageSource.gallery,
+      source: ImageSource.gallery, // vai abrir a galeria para selecionar a imagem
     );
 
     if (imagem != null) {
       setState(() {
-        imagemSelecionada = File(imagem.path);
+        imagemSelecionada = File(imagem.path); // Converte e salva imagem
       });
     }
   }
@@ -171,6 +172,6 @@ class ConteudoFormDialogState extends State<ConteudoFormDialog> {
     prazo: prazoController.text.isEmpty
         ? null
         : prazoFormat.parse(prazoController.text),
-    imagem: imagemSelecionada,
+    imagem: imagemSelecionada, //salva iamgem
   );
 }
