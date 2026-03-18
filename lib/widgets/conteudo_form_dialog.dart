@@ -17,6 +17,7 @@ class ConteudoFormDialog extends StatefulWidget {
 class ConteudoFormDialogState extends State<ConteudoFormDialog> {
   final formkey = GlobalKey<FormState>();
   final descricaoController = TextEditingController();
+  final descricao = TextEditingController();
   final prazoController = TextEditingController();
   final prazoFormat = DateFormat('dd/MM/yyyy');
 
@@ -30,6 +31,7 @@ class ConteudoFormDialogState extends State<ConteudoFormDialog> {
 
     if (widget.tarefaAtual != null) {
       descricaoController.text = widget.tarefaAtual!.descricao;
+      descricao.text = widget.tarefaAtual!.descricao;
       prazoController.text = widget.tarefaAtual!.prazoFormatado;
 
       // carregar imagem da tarefa
@@ -111,6 +113,18 @@ class ConteudoFormDialogState extends State<ConteudoFormDialog> {
                 icon: const Icon(Icons.delete),
                 label: const Text("Remover imagem"),
               ),
+
+            TextFormField(
+              controller: descricao,
+              decoration: const InputDecoration(labelText: 'Descrição do Local'),
+              validator: (String? valor) {
+                if (valor == null || valor.isEmpty) {
+                  return 'Informe a Descrição do Local';
+                }
+                return null;
+              },
+            ),
+
           ],
         ));
   }

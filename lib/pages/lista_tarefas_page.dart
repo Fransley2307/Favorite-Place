@@ -108,19 +108,6 @@ class _ListaTarefasPageState extends State<ListaTarefasPage> {
       ),
 
       const PopupMenuItem<String>(
-          value: ACAO_DELETAR,
-          child: Row(
-            children: [
-              Icon(Icons.delete, color: Colors.red),
-              Padding(
-                padding: EdgeInsets.only(left: 10),
-                child: Text('Excluir'),
-              )
-            ],
-          )
-      ),
-
-      const PopupMenuItem<String>(
           value: ACAO_VISUALIZAR,
           child: Row(
               children: [
@@ -132,6 +119,21 @@ class _ListaTarefasPageState extends State<ListaTarefasPage> {
               ]
           )
       ),
+
+      const PopupMenuItem<String>(
+          value: ACAO_DELETAR,
+          child: Row(
+            children: [
+              Icon(Icons.delete, color: Colors.red),
+              Padding(
+                padding: EdgeInsets.only(left: 10),
+                child: Text('Excluir'),
+              )
+            ],
+          )
+      )
+
+
     ];
   }
 
