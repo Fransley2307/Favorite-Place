@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:gerenciador_tarefas_26/pages/filtro_pages.dart';
-import 'package:gerenciador_tarefas_26/pages/lista_tarefas_page.dart';
+import 'package:gerenciador_tarefas_26/pages/lista_lugares_page.dart';
+
+
+
 
 
 void main() {
@@ -14,13 +17,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Favorite Place',
+      title: 'Favorite Place 2',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
 
-      home: ListaTarefasPage(),
+      home: ListaLugaresPage(),
       routes: {
         FiltroPage.ROUTE_NAME: (BuildContext context) => FiltroPage(),
       },

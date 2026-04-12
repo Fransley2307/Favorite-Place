@@ -1,15 +1,14 @@
 import 'dart:io';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:image_picker/image_picker.dart'; // importa a biblioteca para pegar imagem da camera
 
-import '../model/tarefa.dart';
+import '../model/lugar.dart';
 
 class ConteudoFormDialog extends StatefulWidget {
-  final Tarefa? tarefaAtual;
+  final Lugar? lugarAtual;
 
-  ConteudoFormDialog({Key? key, this.tarefaAtual}) : super(key: key);
+  ConteudoFormDialog({Key? key, this.lugarAtual}) : super(key: key);
 
   ConteudoFormDialogState createState() => ConteudoFormDialogState();
 }
@@ -18,7 +17,7 @@ class ConteudoFormDialogState extends State<ConteudoFormDialog> {
   final formkey = GlobalKey<FormState>();
 
   final descricaoController = TextEditingController(); // campo descrição principaç
-  final descricao = TextEditingController(); // Outro campo de descrição (local)
+  final detalheController = TextEditingController();
   final prazoController = TextEditingController();
 
   final prazoFormat = DateFormat('dd/MM/yyyy');
@@ -27,16 +26,17 @@ class ConteudoFormDialogState extends State<ConteudoFormDialog> {
   final ImagePicker picker = ImagePicker(); // seleciona a imagem
 
   @override
-  @override
   void initState() {
     super.initState();
 
-    if (widget.tarefaAtual != null) {
-      descricaoController.text = widget.tarefaAtual!.descricao; // Preenche descrição
-      descricao.text = widget.tarefaAtual!.descricao; // Preenche segundo campo
-      prazoController.text = widget.tarefaAtual!.prazoFormatado; // Preenche data
+    if (widget.lugarAtual != null) {
+      descricaoController.text = widget.lugarAtual!.descricao; // Preenche descrição
+      detalheController.text = widget.lugarAtual!.detalhe ?? '';
+      prazoController.text = widget.lugarAtual!.prazoFormatado; // Preenche data
 
-      imagemSelecionada = widget.tarefaAtual!.imagem; // Carrega imagem existente
+      if (widget.lugarAtual!.imagem != null) {
+        imagemSelecionada = File(widget.lugarAtual!.imagem!);
+        } // Carrega imagem existente
     }
   }
 
@@ -116,7 +116,7 @@ class ConteudoFormDialogState extends State<ConteudoFormDialog> {
               ),
 
             TextFormField( // descrição do locar
-              controller: descricao,
+              controller: detalheController,
               decoration: const InputDecoration(labelText: 'Descrição do Local'),
               validator: (String? valor) {
                 if (valor == null || valor.isEmpty) {
@@ -166,12 +166,14 @@ class ConteudoFormDialogState extends State<ConteudoFormDialog> {
 
   bool dadosValidados() => formkey.currentState?.validate() == true;
 
-  Tarefa get novaTarefa => Tarefa(
-    id: widget.tarefaAtual?.id ?? 0,
+  Lugar get novoLugar => Lugar(
+    id: widget.lugarAtual?.id,
     descricao: descricaoController.text,
+    detalhe: detalheController.text,
     prazo: prazoController.text.isEmpty
         ? null
         : prazoFormat.parse(prazoController.text),
-    imagem: imagemSelecionada, //salva iamgem
+    imagem: imagemSelecionada?.path, //salva iamgem
   );
 }
+

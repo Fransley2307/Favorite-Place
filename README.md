@@ -1,39 +1,17 @@
-# 📍 Favorite Place App
+# favoriteplace2
 
-Aplicativo mobile desenvolvido em **Flutter** para registrar e gerenciar seus lugares favoritos.
+A new Flutter project.
 
-O app permite cadastrar locais visitados, visualizar os lugares salvos e aplicar filtros para encontrar rapidamente os lugares desejados.
+## Getting Started
 
-Este projeto foi desenvolvido como atividade acadêmica para praticar conceitos de:
-- Interface com usuário
-- Integração com sensores (GPS)
-- Banco de Dados
+This project is a starting point for a Flutter application.
 
----
+A few resources to get you started if this is your first Flutter project:
 
-# 🚀 Funcionalidades
+- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
+- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
+- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
 
-✅ Visualizar lista de lugares favoritos  
-✅ Cadastrar novos lugares  
-✅ Filtrar lugares cadastrados  
-✅ Interface simples e intuitiva  
-
----
-# 📱 Telas do Aplicativo
-
-## 🏠 Tela Inicial
-![inicial](https://github.com/user-attachments/assets/c35bd2c6-975b-41fd-b7de-a77ffc5e17b5)
-
----
-## Cadastro De Lugares Favoritos
-![CadastroLugar](https://github.com/user-attachments/assets/bfd42fcd-a8ba-4e98-83e7-b9b132cfe010)
-
----
-
-## Salvando Lugares Favoritos
-![SalvandoLugar](https://github.com/user-attachments/assets/89354359-4499-4aa2-b39a-d60b83c25ea4)
-
----
-
-## Filtros Disponiveis]
-![Filtro](https://github.com/user-attachments/assets/55a8a737-bb3d-4bd4-9571-f688883cb500)
+For help getting started with Flutter development, view the
+[online documentation](https://docs.flutter.dev/), which offers tutorials,
+samples, guidance on mobile development, and a full API reference.

@@ -2,7 +2,7 @@ import 'package:intl/intl.dart';
 import 'dart:io';
 
 class Tarefa {
-
+  static const NOME_TABELA = 'tarefas';
   static const CAMPO_ID = '_id';
   static const CAMPO_DESCRICAO = 'descricao';
   static const CAMPO_PRAZO = 'prazo';

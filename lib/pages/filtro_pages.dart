@@ -1,7 +1,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:gerenciador_tarefas_26/model/tarefa.dart';
+import 'package:gerenciador_tarefas_26/model/lugar.dart';
 
 class FiltroPage extends StatefulWidget{
   static const ROUTE_NAME = '/filtro';
@@ -17,13 +17,13 @@ class FiltroPage extends StatefulWidget{
 class _FiltroPageState extends State<FiltroPage>{
 
   final _camposParaOrdenacao = {
-    Tarefa.CAMPO_ID: 'Código',
-    Tarefa.CAMPO_DESCRICAO: 'Descrição',
-    Tarefa.CAMPO_PRAZO: 'Dia'
+    Lugar.CAMPO_ID: 'Código',
+    Lugar.CAMPO_DESCRICAO: 'Descrição',
+    Lugar.CAMPO_PRAZO: 'Dia'
   };
 
   final descricaoController = TextEditingController();
-  String campoOrdenacao = Tarefa.CAMPO_ID;
+  String campoOrdenacao = Lugar.CAMPO_ID;
   bool usarOrdemDecrescente = false;
   bool alterouValores = false;
 
